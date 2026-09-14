@@ -19,6 +19,7 @@ const SPECIALIZATIONS = Object.keys(SPEC_COLORS);
 const DEFAULT_FORM = {
     name: "", email: "", phone: "",
     specialization: "Cardiology", qualification: "",
+    father_name: "", cnic: "",
     experience_years: "", consultation_fee: "",
     available_days: "Mon, Tue, Wed, Thu, Fri",
     available_time_start: "09:00", available_time_end: "17:00",
@@ -61,6 +62,8 @@ function Doctors() {
             phone: formData.phone,
             specialization: formData.specialization,
             qualification: formData.qualification || "MBBS",
+            father_name: formData.father_name || "",
+            cnic: formData.cnic || "",
             experience_years: parseInt(formData.experience_years) || 0,
             consultation_fee: parseFloat(formData.consultation_fee) || 0,
             available_days: formData.available_days,
@@ -96,6 +99,8 @@ function Doctors() {
             phone: doctor.phone,
             specialization: doctor.specialization,
             qualification: doctor.qualification || "",
+            father_name: doctor.father_name || "",
+            cnic: doctor.cnic || "",
             experience_years: doctor.experience_years || "",
             consultation_fee: doctor.consultation_fee || "",
             available_days: doctor.available_days || "Mon, Tue, Wed, Thu, Fri",
@@ -196,11 +201,27 @@ function Doctors() {
 
                             {/* Full Name */}
                             <div style={s.fg}>
-                                <label style={s.label}>Full Name <Req /></label>
+                                <label style={s.label}>Name <Req /></label>
                                 <input type="text" name="name" placeholder="Dr. John Smith" value={formData.name}
                                     onChange={handleInputChange} required style={s.input}
                                     onFocus={focusStyle} onBlur={blurStyle} />
                             </div>
+
+                            {/* Father Name + CNIC */}
+                        <div style={s.row}>
+                            <div style={s.fg}>
+                                <label style={s.label}>Father Name</label>
+                                <input type="text" name="father_name" value={formData.father_name}
+                                    placeholder="Father's Name" onChange={handleInputChange} style={s.input}
+                                    onFocus={focusStyle} onBlur={blurStyle} />
+                            </div>
+                            <div style={s.fg}>
+                                <label style={s.label}>CNIC</label>
+                                <input type="text" name="cnic" value={formData.cnic}
+                                    placeholder="XXXXX-XXXXXXX-X" onChange={handleInputChange} style={s.input}
+                                    onFocus={focusStyle} onBlur={blurStyle} />
+                            </div>
+                        </div>
 
                             {/* Email + Phone */}
                             <div style={s.row}>
@@ -234,7 +255,7 @@ function Doctors() {
                                         placeholder="MBBS, MD" onChange={handleInputChange} style={s.input}
                                         onFocus={focusStyle} onBlur={blurStyle} />
                                 </div>
-                            </div>
+                        </div>
 
                             {/* Experience + Fee */}
                             <div style={s.row}>
@@ -472,3 +493,8 @@ const s = {
 };
 
 export default Doctors;
+
+
+
+
+

@@ -465,7 +465,7 @@ function Billing() {
 }
 
 const s = {
-    page: { padding: "28px 32px", background: "#f8fafc", minHeight: "100vh", fontFamily: "'Segoe UI', system-ui, -apple-system, sans-serif" },
+    page: { padding: "28px 32px", background: "#f8fafc", minHeight: "100vh", overflowX: "hidden", fontFamily: "'Segoe UI', system-ui, -apple-system, sans-serif" },
 
     loadingScreen: { display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: "60vh" },
     spinner: { width: 36, height: 36, border: "3px solid #e2e8f0", borderTop: "3px solid #1d9e75", borderRadius: "50%", animation: "spin 0.8s linear infinite" },
@@ -526,3 +526,4 @@ const s = {
 };
 
 export default Billing;
+

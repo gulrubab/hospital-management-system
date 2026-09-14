@@ -69,6 +69,14 @@ const NAV_ITEMS = [
                 <path d="M3 3h18v18H3z"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/>
             </svg>
         ),
+    },    {
+        to: "/lab-reports",
+        label: "Lab Reports",
+        icon: (
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M9 2v6l-5 10a2 2 0 0 0 2 3h12a2 2 0 0 0 2-3L15 8V2"/><line x1="9" y1="2" x2="15" y2="2"/>
+            </svg>
+        ),
     },
     {
         to: "/reports",

@@ -19,6 +19,8 @@ class Doctor(models.Model):
     phone = models.CharField(max_length=15)
     specialization = models.CharField(max_length=50, choices=SPECIALIZATION_CHOICES)
     qualification = models.CharField(max_length=200)
+    father_name = models.CharField(max_length=200, blank=True, null=True)
+    cnic = models.CharField(max_length=15, blank=True, null=True)
     experience_years = models.IntegerField()
     consultation_fee = models.DecimalField(max_digits=10, decimal_places=2)
     available_days = models.CharField(max_length=100, help_text="e.g., Mon, Tue, Wed")

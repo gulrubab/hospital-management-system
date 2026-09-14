@@ -1,6 +1,7 @@
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
-from django.http import HttpResponse
+from django.shortcuts import render, get_object_or_404
+from datetime import date
 from .models import Prescription, PrescriptionItem
 from .serializers import PrescriptionSerializer, PrescriptionItemSerializer
 
@@ -18,9 +19,11 @@ class PrescriptionItemViewSet(viewsets.ModelViewSet):
 
 
 def generate_pdf(request, pk):
-    # Temporary response until Pillow is compatible with Python 3.14
-    return HttpResponse(
-        "PDF generation will be available soon. Please use Python 3.11 for PDF support.",
-        status=200,
-        content_type="text/plain"
-    )
+    prescription = get_object_or_404(Prescription, pk=pk)
+    dob = prescription.patient.date_of_birth
+    today = date.today()
+    age = today.year - dob.year - ((today.month, today.day) < (dob.month, dob.day))
+    return render(request, 'prescriptions/prescription_print.html', {
+        'prescription': prescription,
+        'patient_age': age,
+    })

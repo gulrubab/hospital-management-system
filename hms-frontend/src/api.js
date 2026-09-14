@@ -2,7 +2,7 @@ import axios from "axios";
 
 // Change this URL to your Railway backend URL
 const API = axios.create({
-    baseURL: "https://hospital-management-system.up.railway.app/api/",
+    baseURL: "http://127.0.0.1:8000/api/",
 });
 
 API.interceptors.request.use((config) => {

@@ -167,7 +167,7 @@ const globalStyles = `
     padding: 24px 28px 20px; border-bottom: 1.5px solid var(--border);
   }
   .modal-title {
-    font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 800;
+    font-size: 20px; font-weight: 700;
     color: var(--text-primary); display: flex; align-items: center; gap: 10px;
   }
   .modal-close {
@@ -234,7 +234,7 @@ const globalStyles = `
     box-shadow: var(--shadow-sm);
   }
   .stat-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 6px; }
-  .stat-value { font-family: 'Syne', sans-serif; font-size: 26px; font-weight: 800; color: var(--text-primary); }
+  .stat-value { font-size: 26px; font-weight: 700; color: var(--text-primary); }
   .stat-sub   { font-size: 12px; color: var(--text-muted); margin-top: 3px; }
 `;
 
@@ -313,7 +313,7 @@ function Pharmacy() {
                 {/* Header */}
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "24px" }}>
                     <div>
-                        <h1 style={{ fontFamily: "'Syne', sans-serif", fontSize: "28px", fontWeight: 800, color: "var(--text-primary)", marginBottom: "4px" }}>
+                        <h1 style={{ fontSize: "26px", fontWeight: 700, color: "#0f172a", marginBottom: "4px" }}>
                             Pharmacy
                         </h1>
                         <p style={{ fontSize: "14px", color: "var(--text-secondary)" }}>Inventory & stock management</p>
@@ -480,3 +480,6 @@ function Pharmacy() {
 }
 
 export default Pharmacy;
+
+
+

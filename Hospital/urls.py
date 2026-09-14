@@ -2,6 +2,8 @@ from django.contrib import admin
 from django.urls import path, include
 from django.http import JsonResponse
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+from django.conf import settings
+from django.conf.urls.static import static
 
 def home(request):
     return JsonResponse({
@@ -29,4 +31,8 @@ urlpatterns = [
     
     # Pharmacy URLs - ADD THIS LINE
     path('api/', include('pharmacy.urls')),
+    path('api/', include('labreports.urls')),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

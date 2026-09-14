@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import API from "../api";
 import { FaUserInjured, FaUserMd, FaCalendarCheck, FaClock, FaRupeeSign } from "react-icons/fa";
 
 function Dashboard() {
+    const navigate = useNavigate();
     const [stats, setStats] = useState({
         total_patients: 0,
         total_doctors: 0,
@@ -43,6 +45,7 @@ function Dashboard() {
             bg: "#e6faf3",
             border: "#6ee7b7",
             sub: "Registered patients",
+            path: "/patients",
         },
         {
             title: "Total Doctors",
@@ -52,6 +55,7 @@ function Dashboard() {
             bg: "#e6f4ff",
             border: "#93c5fd",
             sub: "Active medical staff",
+            path: "/doctors",
         },
         {
             title: "Total Appointments",
@@ -61,6 +65,7 @@ function Dashboard() {
             bg: "#fff7e6",
             border: "#fcd34d",
             sub: "All time bookings",
+            path: "/appointments",
         },
         {
             title: "Today's Appointments",
@@ -70,6 +75,7 @@ function Dashboard() {
             bg: "#f5f0ff",
             border: "#c4b5fd",
             sub: "Scheduled for today",
+            path: "/appointments",
         },
         {
             title: "Total Revenue",
@@ -79,6 +85,7 @@ function Dashboard() {
             bg: "#fff0f6",
             border: "#f9a8d4",
             sub: "From paid bills",
+            path: "/billing",
         },
     ];
 
@@ -123,7 +130,8 @@ function Dashboard() {
                 {cards.map((card, index) => (
                     <div
                         key={index}
-                        style={s.card}
+                        style={{ ...s.card, cursor: "pointer" }}
+                        onClick={() => navigate(card.path)}
                         onMouseEnter={e => {
                             e.currentTarget.style.transform = "translateY(-4px)";
                             e.currentTarget.style.boxShadow = "0 8px 28px rgba(0,0,0,0.10)";
@@ -277,3 +285,7 @@ const s = {
 };
 
 export default Dashboard;
+
+
+
+

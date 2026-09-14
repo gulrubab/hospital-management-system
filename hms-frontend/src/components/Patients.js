@@ -253,7 +253,6 @@ const globalStyles = `
   }
 
   .modal-title {
-    font-family: 'Syne', sans-serif;
     font-size: 20px;
     font-weight: 800;
     color: var(--text-primary);
@@ -549,6 +548,23 @@ function Patients() {
         }
     };
 
+    const handleDownloadReport = async (patientId) => {
+        try {
+            const response = await API.get(`reports/patients/${patientId}/`, { responseType: "blob" });
+            const url = window.URL.createObjectURL(new Blob([response.data]));
+            const link = document.createElement("a");
+            link.href = url;
+            link.setAttribute("download", `patient_${patientId}_report.pdf`);
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
+            window.URL.revokeObjectURL(url);
+        } catch (error) {
+            console.error("Error downloading report:", error);
+            alert("Error downloading patient report.");
+        }
+    };
+
     if (loading) {
         return (
             <>
@@ -571,7 +587,7 @@ function Patients() {
                 {/* Header */}
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "28px" }}>
                     <div>
-                        <h1 style={{ fontFamily: "'Syne', sans-serif", fontSize: "28px", fontWeight: 800, color: "var(--text-primary)", marginBottom: "4px" }}>
+                        <h1 style={{ fontSize: "26px", fontWeight: 700, color: "#0f172a", marginBottom: "4px" }}>
                             Patient Registry
                         </h1>
                         <p style={{ fontSize: "14px", color: "var(--text-secondary)" }}>
@@ -760,7 +776,7 @@ function Patients() {
                                                 : <span style={{ color: "var(--text-muted)" }}>Unassigned</span>}
                                         </td>
                                         <td style={{ textAlign: "right" }}>
-                                            <button className="btn-edit" onClick={() => handleEdit(patient)}>✏️ Edit</button>
+                                            <button className="btn-edit" onClick={() => handleDownloadReport(patient.id)}>Report</button><button className="btn-edit" onClick={() => handleEdit(patient)}>✏️ Edit</button>
                                             <button className="btn-delete" onClick={() => handleDelete(patient.id)}>🗑 Delete</button>
                                         </td>
                                     </tr>
@@ -782,3 +798,6 @@ function Patients() {
 }
 
 export default Patients;
+
+
+

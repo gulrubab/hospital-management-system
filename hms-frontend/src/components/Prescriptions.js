@@ -392,6 +392,12 @@ function Prescriptions() {
                                                 + Medicine
                                             </button>
                                             <button
+                                                className="btn-secondary-sm"
+                                                onClick={() => window.open(`http://127.0.0.1:8000/api/pdf/${pres.id}/`, "_blank")}
+                                            >
+                                                Print
+                                            </button>
+                                            <button
                                                 className="btn-danger-sm"
                                                 onClick={() => deletePrescription(pres.id)}
                                             >
@@ -478,9 +484,8 @@ const s = {
         flexWrap: "wrap", gap: "12px",
     },
     pageTitle: {
-        fontSize: "26px", fontWeight: "600",
-        color: "#0f172a", margin: "0 0 4px",
-        letterSpacing: "-0.5px",
+        fontSize: "26px", fontWeight: 700,
+        color: "#0f172a", margin: 0,
     },
     pageSubtitle: {
         fontSize: "13px", color: "#6b7280", margin: 0,
@@ -666,3 +671,4 @@ const s = {
 };
 
 export default Prescriptions;
+
