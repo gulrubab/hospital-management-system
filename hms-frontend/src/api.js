@@ -2,7 +2,7 @@ import axios from "axios";
 
 // Change this URL to your Railway backend URL
 const API = axios.create({
-    baseURL: "http://127.0.0.1:8000/api/",
+    baseURL: "/api/",
 });
 
 API.interceptors.request.use((config) => {
@@ -14,3 +14,5 @@ API.interceptors.request.use((config) => {
 });
 
 export default API;
+
+
