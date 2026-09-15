@@ -393,7 +393,7 @@ function Prescriptions() {
                                             </button>
                                             <button
                                                 className="btn-secondary-sm"
-                                                onClick={() => window.open(`http://127.0.0.1:8000/api/pdf/${pres.id}/`, "_blank")}
+                                                onClick={() => window.open(`/api/pdf/${pres.id}/`, "_blank")}
                                             >
                                                 Print
                                             </button>
@@ -671,4 +671,5 @@ const s = {
 };
 
 export default Prescriptions;
+
 
